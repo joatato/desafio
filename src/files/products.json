@@ -1,0 +1,177 @@
+[
+     {
+          "title": "Queso",
+          "description": "alimento derivado de la vaca",
+          "code": "1234",
+          "price": "25",
+          "category": "lacteo",
+          "stock": "2",
+          "status": true,
+          "id": "f40d82aa-db87-4bb8-ba86-5a322fb20ed3"
+     },
+     {
+          "title": "Papa",
+          "description": "Bebida alcohólica",
+          "code": "1234",
+          "price": "25",
+          "category": "verdura",
+          "stock": "2",
+          "status": true,
+          "id": "d76fe50c-2073-4fa9-92f8-083536606b60"
+     },
+     {
+          "title": "Pan",
+          "description": "Fruta amarilla",
+          "code": "1234",
+          "price": "25",
+          "stock": "1",
+          "category": "fruta",
+          "status": true,
+          "id": "ba5c6617-0753-4a29-9314-112c8457ca25"
+     },
+     {
+          "title": "Frutilla",
+          "description": "Fruta amarilla",
+          "code": "1234",
+          "price": "25",
+          "thumbnail": "poraca",
+          "stock": "1",
+          "category": "fruta",
+          "status": true,
+          "id": "0244b685-7bf4-4d5a-a124-cd094a0ce1ec"
+     },
+     {
+          "title": "Manzana",
+          "description": "Fruta roja",
+          "code": "3323",
+          "price": "12",
+          "thumbnail": "poraca",
+          "stock": "1",
+          "category": "fruta",
+          "status": true,
+          "id": "1c1d3214-f87d-4434-9bc4-26cebc3507a1"
+     },
+     {
+          "title": "Pera",
+          "description": "Fruta verde",
+          "code": "3324",
+          "price": "12",
+          "thumbnail": "poraca",
+          "stock": "1",
+          "category": "fruta",
+          "status": true,
+          "id": "b2bd923d-4932-4c3e-93a3-99ab61156088"
+     },
+     {
+          "title": "Durazno",
+          "description": "Fruta verde",
+          "code": "3325",
+          "price": "12",
+          "thumbnail": "poraca",
+          "stock": "1",
+          "category": "fruta",
+          "status": true,
+          "id": "cabe9fbe-df25-4ebb-80c0-626fecf70b1a"
+     },
+     {
+          "title": "Ciruela",
+          "description": "Fruta verde",
+          "code": "3326",
+          "price": "12",
+          "thumbnail": "poraca",
+          "stock": "1",
+          "category": "fruta",
+          "status": true,
+          "id": "e994bd37-3cda-4963-bee8-0dadb88e92f4"
+     },
+     {
+          "title": "Limon",
+          "description": "Fruta amarilla",
+          "code": "1764",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "20fafdba-9688-4459-8543-fb591a4929f6"
+     },
+     {
+          "title": "Limon",
+          "description": "Fruta amarilla",
+          "code": "1763",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "a6214857-bd45-44e1-9f65-5ded62de4884"
+     },
+     {
+          "title": "Limon",
+          "description": "Fruta amarilla",
+          "code": "1762",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "2d7eae0e-5944-4b37-8e95-63c39f0b133f"
+     },
+     {
+          "title": "Limon",
+          "description": "Fruta amarilla",
+          "code": "1761",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "1fd4b7af-35b9-4da8-87d4-21c92968f53c"
+     },
+     {
+          "title": "QuesoCedar",
+          "description": "Fruta amarilla",
+          "code": "1753",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "83f131ec-a1d3-4a51-9bdd-3253136b4012"
+     },
+     {
+          "title": "QuesoChedar",
+          "description": "Fruta amarilla",
+          "code": "1754",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "deaa4fce-97b6-481e-9420-f9f39511e839"
+     },
+     {
+          "title": "Pizza",
+          "description": "Fruta amarilla",
+          "code": "1755",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "8c48aabb-0fae-4555-a7ba-e1a3d89e009b"
+     },
+     {
+          "title": "Sandia",
+          "description": "Fruta amarilla",
+          "code": "1756",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "5ef33771-3ff7-45d5-8f8e-6f74396f19c5"
+     },
+     {
+          "title": "Lemonnn",
+          "description": "Fruta amarilla",
+          "code": "1757",
+          "price": "25",
+          "stock": "2",
+          "category": "fruta",
+          "status": true,
+          "id": "fda6c481-59f1-442b-9f3a-0f36b37cf9c3"
+     }
+]
