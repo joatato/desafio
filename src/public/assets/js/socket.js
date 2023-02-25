@@ -4,7 +4,6 @@ let nombre = prompt("Ingrese su nombre:");
 let divMensajes = document.querySelector('#mensajes');
 let textMensaje = document.querySelector('#mensaje');
 let productMessage = document.querySelector('#mensajeDeActualizacion');
-let divTemperatura = document.getElementById('temperatura');
 let divActualizador = document.getElementById('actualizador')
 
 if (textMensaje) {
@@ -36,10 +35,6 @@ let socket = io();
 
 socket.on('connection', (data) => {
     console.log('Se ha enlazado')
-})
-
-socket.on('lecturaTemperatura', (temperatura) => {
-    divTemperatura.innerHTML = temperatura;
 })
 
 socket.on('hola', (objeto) => {

@@ -34,49 +34,8 @@ const server = app.listen(PORT, () => {
 });
 
 
-
 const io = new Server(server);
 
-io.on('connection', (socket) => {
-    // console.log(socket.handshake);
-    console.log(`Se han conectado, socket id ${socket.id}`)
 
-    socket.emit('hola', {
-        emisor: 'Servidor',
-        mensaje: `Hola, desde el server...!!!`
-    })
-
-    socket.on('respuestaAlSaludo', (mensaje) => {
-        console.log(`${mensaje.emisor} dice ${mensaje.mensaje}`);
-    })
-
-    socket.on('mensaje', (mensaje) => {
-        console.log(`${mensaje.emisor} dice ${mensaje.mensaje}`);
-
-        // socket.broadcast.emit('nuevoMensaje',mensaje)
-        io.emit('nuevoMensaje', mensaje)
-
-    })
-
-
-})
-
-let temperatura = 27;
-let flag = 0;
-setInterval(() => {
-    // sensor midiendo algo... una lógica y códigos importantes... ta ta ta... y dispara el emit al final...
-    // logica que uno requiera para su app... todo lo simple o compleja que sea...
-    let aleatorio = Math.random();
-    flag++;
-    if (flag <= 3) {
-        temperatura += aleatorio;
-    } else {
-        temperatura -= aleatorio;
-        if (flag > 6) {
-            flag = 0;
-        }
-    }
-    io.emit('lecturaTemperatura', temperatura.toFixed(2));
-}, 1500);
 server.on('error', (error) => console.log(error));
 
