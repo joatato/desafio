@@ -8,15 +8,12 @@ router.get('/', async (req, res) => {
     let products = stock
     stock ? stock = true : stock = false
 
-    res.status(200).render('index', {
+    res.status(200).render('home', {
         title: "Estufas San Juan",
         existenciaDeStock: stock,
         productos: products
     })
 })
-
-
-
 
 router.get('/realtimeproducts', async (req, res) => {
     let stock = await pm.getProduct()

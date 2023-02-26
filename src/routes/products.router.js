@@ -93,9 +93,9 @@ router.post('/', async (req, res) => {
     }
     let productAdded = await pm.addProduct(product)
     if (productAdded) {
+        let products = await pm.getProduct()
+        io.emit('editProduct', products);
 
-        io.emit('newProduct',product);
-        
         console.log(productAdded)
         res.setHeader('Content-Type', 'application/json')
         return res.status(201).json({
@@ -113,6 +113,7 @@ router.post('/', async (req, res) => {
 
 
 router.put('/:pid', async (req, res) => {
+    let io = req.serverSocket
     let id = req.params.pid
     let key = req.body.key
     let value = req.body.value
@@ -139,6 +140,8 @@ router.put('/:pid', async (req, res) => {
 
     if (indice) {
         await pm.updateProduct(id, key, value)
+        let products = await pm.getProduct()
+        io.emit('editProduct', products);
         let product = await pm.getProductById(id)
         res.setHeader('Content-Type', 'application/json')
         return res.status(201).json({
@@ -155,11 +158,15 @@ router.put('/:pid', async (req, res) => {
 
 
 router.delete('/:pid', async (req, res) => {
+    let io = req.serverSocket
     let id = req.params.pid
+    let eliminado = await pm.getProductById(id)
     let quePaso = await pm.deleteProduct(id)
     let products = await pm.getProduct()
     if (quePaso) {
-        let eliminado = await pm.getProductById(id)
+        let products2 = await pm.getProduct()
+        io.emit('editProduct', products2);
+
         res.setHeader('Content-Type', 'application/json')
         return res.status(200).json({
             message: `Todo ok... producto con id ${id} eliminado: ${eliminado.title}`,
@@ -168,7 +175,7 @@ router.delete('/:pid', async (req, res) => {
     }
     res.setHeader('Content-Type', 'application/json')
     res.status(404).json({
-        message: `404 Not Found. No se encontro el producto con id ${idProduct}`,
+        message: `404 Not Found. No se encontro el producto con id ${id}`,
         products
     })
 
