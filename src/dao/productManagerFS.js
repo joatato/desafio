@@ -1,6 +1,7 @@
-const { v4: uuidv4 } = require('uuid')
-const fs = require('fs')
-class productManager {
+import { v4 as uuidv4 } from 'uuid';
+import fs from 'fs';
+
+export default class productManager {
 
     constructor(archivo) {
         this.path = archivo
@@ -64,5 +65,3 @@ class productManager {
     }
 }
 
-
-module.exports = productManager

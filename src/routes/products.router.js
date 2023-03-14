@@ -1,37 +1,15 @@
-const { Router } = require('express')
+import { Router } from 'express';
+import productManager from '../dao/productManagerDB.js';
+
 const router = Router()
-const productManager = require('../manager/productManager')
-const pm = new productManager("./src/files/products.json")
+const pm = new productManager()
+// const pm = new productManager("./src/files/products.json")
 
 /* const io = require('socket.io')(); */
 
 
 
-router.get('/', async (req, res) => {
-    let limit = req.query.limit
-    let products = await pm.getProduct()
-    if (limit < products.length) {
-        let productsLimit = products
-        productsLimit.splice(limit, products.length - limit)
-        res.setHeader('Content-type', 'application/json')
-        res.status(200).json({
-            message: `Los ${limit} productos:`,
-            productsLimit
-        })
-    } else if (products) {
-        res.setHeader('Content-type', 'application/json')
-        res.status(200).json({
-            message: "Los productos actuales son: ",
-            products
-        })
-    } else {
-        res.setHeader('Content-Type', 'application/json')
-        res.status(404).json({
-            message: "404 Not Found. No hay productos aún"
-        })
-    }
-})
-
+router.get('/', pm.getProduct)
 
 
 router.get('/:pid', async (req, res) => {
@@ -51,8 +29,10 @@ router.get('/:pid', async (req, res) => {
 })
 
 
+router.post('/',pm.addProduct)
 
-router.post('/', async (req, res) => {
+
+/* router.post('/', async (req, res) => {
     console.log(req.body)
     let io = req.serverSocket
     let product = req.body
@@ -108,7 +88,7 @@ router.post('/', async (req, res) => {
             message: `400 Bad Request. El product con código: ${product.code} . Ya existe en la base de datos`
         })
     }
-})
+}) */
 
 
 
@@ -181,4 +161,4 @@ router.delete('/:pid', async (req, res) => {
 
 })
 
-module.exports = router
+export default router

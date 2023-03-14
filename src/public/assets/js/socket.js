@@ -18,4 +18,3 @@ socket.on('editProduct', async (products) => {
     }
     productMessage.innerHTML = `<p> Se ha editado la lista de productos </p>`
 })
-
