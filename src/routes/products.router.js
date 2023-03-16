@@ -29,7 +29,7 @@ router.get('/:pid', async (req, res) => {
 })
 
 
-router.post('/',pm.addProduct)
+router.post('/', pm.addProduct)
 
 
 /* router.post('/', async (req, res) => {

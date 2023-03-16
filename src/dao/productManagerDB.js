@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs';
 import { productModels } from './models/productModels.js';
 
+
 export default class productManager {
 
     constructor() {
@@ -23,7 +24,6 @@ export default class productManager {
         res.status(200).json({
             products
         })
-
     }
 
     async addProduct(req, res) {
@@ -33,7 +33,7 @@ export default class productManager {
         // lo que definimos como required)
         // - que no se generen duplicados en la coleccion (en el Schema estar atentos a los unique)
         // ... etc....
-        
+
 
         /* res.setHeader('Content-Type', 'application/json');
         return res.status(201).json({
@@ -77,11 +77,15 @@ export default class productManager {
                 product
             })
         }
-        let productsCreados = await productModels.create(product);
-        if (productsCreados) {
-            let products = await pm.getProduct()
+        let productsEnVerificacion
+        // SE SUPONE QUE ESTO QUE ACABO DE CREAR DEBERÍA FUNCIONAR :D.
+        await productModels.findOne({ code: product.code }) ? productsEnVerificacion = false : productsEnVerificacion = true
+        productsEnVerificacion ? (await productModels.findOne({ title: product.title }) ? productsEnVerificacion = false : productsEnVerificacion = true) : productsEnVerificacion = false
+        console.log(productsEnVerificacion);
+        if (productsEnVerificacion) {
+            let productsCreados = await productModels.create(product);
+            let products = await this.getProduct() 
             io.emit('editProduct', products);
-
             console.log(productsCreados)
             res.setHeader('Content-Type', 'application/json')
             return res.status(201).json({
@@ -95,14 +99,14 @@ export default class productManager {
             })
         }
 
-
+ 
 
     }
 
     /* async addProduct(product) {
         let products = await this.getProduct() 
         let code = products.findIndex(pr => pr.code == product.code)
-        if (code == -1) {
+        if (code == -1) { 
             product.status = true
             product.id = uuidv4()
             products.push(product)

@@ -1,4 +1,6 @@
 import { Router } from 'express';
+
+// DEBO CAMBIARLO A productManagerDB.js . Pero por el momento no me anda asi que lo dejamos así.
 import productManager from '../dao/productManagerFS.js';
 
 const router = Router();
@@ -28,4 +30,4 @@ router.get('/realtimeproducts', async (req, res) => {
   });
 });
 
-export default router;
+export default router; 

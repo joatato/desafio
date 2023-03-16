@@ -6,8 +6,7 @@ const productsEsquema = new Schema({
     title: {
         type: String,
         required: true,
-        unique: [true, `400 Bad Request. Ya existe en la base de datos un producto con ese nombre`],
-        indice: true
+        unique: [true, `400 Bad Request. Ya existe en la base de datos un producto con ese nombre`]
     },
     description: String,
     code: {
