@@ -9,8 +9,8 @@ export default class productManager {
     }
 
     async getProduct(req, res) {
-
         let products;
+
         try {
             products = await productModels.find()
         } catch (error) {
@@ -19,11 +19,14 @@ export default class productManager {
                 mensaje: `Error al obtener products de la DB`
             })
         }
-
+        console.log(products);
+        
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json({
+            message: 'Todo ok...',
             products
         })
+
     }
 
     async addProduct(req, res) {
@@ -39,7 +42,7 @@ export default class productManager {
         return res.status(201).json({
             productsCreados
         }) */
-
+        let io = req.serverSocket
         let product = req.body
         console.log(product);
         if (!product.title || !product.description || !product.code || !product.price || !product.stock || !product.category || Object.keys(product).some(key => key !== 'title' && key !== 'description' && key !== 'code' && key !== 'price' && key !== 'stock' && key !== 'category' && key !== 'thumbnail')) {
@@ -84,7 +87,7 @@ export default class productManager {
         console.log(productsEnVerificacion);
         if (productsEnVerificacion) {
             let productsCreados = await productModels.create(product);
-            let products = await this.getProduct() 
+            let products = await productModels.find()
             io.emit('editProduct', products);
             console.log(productsCreados)
             res.setHeader('Content-Type', 'application/json')
@@ -98,9 +101,6 @@ export default class productManager {
                 message: `400 Bad Request. El product con código: ${product.code} . Ya existe en la base de datos`
             })
         }
-
- 
-
     }
 
     /* async addProduct(product) {

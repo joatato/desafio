@@ -2,6 +2,7 @@ let productMessage = document.querySelector('#mensajeDeActualizacion');
 let divActualizador = document.getElementById('actualizador')
 let socket = io();
 
+
 socket.on('editProduct', async (products) => {
     console.log('Esto andaaaa!!!', products, products[0].title);
     divActualizador.innerHTML = ''

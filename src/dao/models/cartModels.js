@@ -5,6 +5,7 @@ const cartsColeccion = 'carts';
 const cartsEsquema = new Schema({
     products: [
         {
+            id:Number,
             quantity: Number
         }
     ]

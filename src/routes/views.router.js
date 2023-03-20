@@ -1,25 +1,33 @@
 import { Router } from 'express';
-
+import { productModels } from '../dao/models/productModels.js';
 // DEBO CAMBIARLO A productManagerDB.js . Pero por el momento no me anda asi que lo dejamos así.
-import productManager from '../dao/productManagerFS.js';
+import productRouter from './products.router.js';
 
 const router = Router();
-const pm = new productManager();
+// const pm = new productManager();
 
 router.get('/', async (req, res) => {
-  let stock = await pm.getProduct();
+
+  
+  let stock =  await productModels.find()
+  console.log(stock);
+  for (const stokk of stock){
+    console.log(stokk.price);
+    
+  }
   let products = stock;
   stock ? (stock = true) : (stock = false);
 
   res.status(200).render('home', {
     title: 'Estufas San Juan',
     existenciaDeStock: stock,
-    productos: products,
+    productos: products, 
+    allowProtoMethodsByDefault: true, // Opción para permitir el acceso a las propiedades del prototipo de forma segura
   });
 });
 
 router.get('/realtimeproducts', async (req, res) => {
-  let stock = await pm.getProduct();
+  let stock =  await productModels.find()
   let products = stock;
   stock ? (stock = true) : (stock = false);
 

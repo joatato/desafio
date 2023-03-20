@@ -16,7 +16,12 @@ const server = app.listen(PORT, () => {
 
 const io = new Server(server);
 
-app.engine('handlebars', engine());
+app.engine('handlebars', engine({
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true
+  }
+}));
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
@@ -54,8 +59,8 @@ const env = async () => {
     //const cursor = ratings.find();
     //await cursor.forEach(doc => console.dir(doc));
 
-    
-    await mongoose.connect('mongodb+srv://joaquintatoaguero:Tatotato142857.@cluster0.ywbl7gx.mongodb.net/?retryWrites=true&w=majority')
+
+    await mongoose.connect('mongodb+srv://joaquintatoaguero:Tatotato142857.@cluster0.ywbl7gx.mongodb.net/?retryWrites=true&w=majority&name=desafio-01')
     // await mongoose.connect("mongodb+srv://cluster0.cbslnee.mongodb.net/myFirstDatabase")
     //mongosh "mongodb+srv://cluster0.cbslnee.mongodb.net/myFirstDatabase" --apiVersion 1 --username tatotatoaguero
     // await mongoose.connect('mongodb+srv://coderhouse:coderhouse@cluster0.v8ivmdl.mongodb.net/?retryWrites=true&w=majority&dbName=base_clase9')
