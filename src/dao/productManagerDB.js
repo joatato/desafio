@@ -20,7 +20,7 @@ export default class productManager {
             })
         }
         console.log(products);
-        
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json({
             message: 'Todo ok...',
@@ -119,8 +119,10 @@ export default class productManager {
     } */
 
     async getProductById(id) {
-        let products = await this.getProduct()
-        let copiaProduct = {}
+        let products = await productModels.find({ _id: id })
+        products ? products : false
+        return products
+        /* let copiaProduct = {}
         for (const producto of products) {
             if (producto.id == id) {
                 copiaProduct = producto
@@ -128,18 +130,22 @@ export default class productManager {
                 return copiaProduct
             }
         }
-        return false
+        return false */
     }
 
+
+    //Debo hacerlo funcionar con la DB
     async updateProduct(id, key, value) {
-        let products = await this.getProduct()
+        let products = await productModels.find({ _id: id })
+        
         let existencia = products.findIndex(pr => pr.id == id)
         if (existencia !== -1) {
             products[existencia][key] = value
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, 5))
         }
     }
-
+    
+    //Debo hacerlo funcionar con la DB
     async deleteProduct(id) {
         let products = await this.getProduct()
         let quePaso = products.filter(pr => pr.id == id)

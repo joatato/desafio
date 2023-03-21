@@ -38,4 +38,15 @@ router.get('/realtimeproducts', async (req, res) => {
   });
 });
 
+router.get('/chat', async (req, res) => {
+  let stock =  await productModels.find()
+  let products = stock;
+  stock ? (stock = true) : (stock = false);
+
+  res.status(200).render('chat', {
+    title: 'Chat',
+    estilos:'styles.css'
+  });
+});
+
 export default router; 
